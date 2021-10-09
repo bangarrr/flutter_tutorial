@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/gesture.dart';
 
 void main() => runApp(MyApp());
 
@@ -73,7 +74,17 @@ class _RandomWordsState extends State<RandomWords> {
       appBar: AppBar(
         title: const Text('Startup Name Generator'),
         actions: [
-          IconButton(onPressed: _pushSaved, icon: Icon(Icons.list))
+          IconButton(onPressed: _pushSaved, icon: Icon(Icons.list)),
+          IconButton(
+              onPressed: () => {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return Counter();
+                  })
+                )
+              },
+              icon: Icon(Icons.account_circle)
+          )
         ],
       ),
       body: _buildSuggestions()
